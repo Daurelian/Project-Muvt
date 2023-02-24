@@ -43,4 +43,4 @@ HINT 1: Non esiste "la soluzione" di questo esercizio, è possibile tirare fuori
 
 HINT 2: Se avete una domanda da fare sul sistema, fatela sul canale discord, è più veloce e potrebbe essere d'aiuto per altri gruppi.
 
-HINT 3: Se pensate che una certa libreria esterna può esservi utile per risolvere un determinato problema...Usatela!
+HINT 3: Se pensate che una certa libreria esterna può esservi utile per risolvere un determinato problema...Usatela!!
