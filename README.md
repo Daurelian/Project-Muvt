@@ -29,7 +29,7 @@ Realizzate le classi e le funzionalità di questo sistema e fatevi un main dove 
 
 # DISCLAIMER
 
-Ovviamente un reale sistema del genere richiederebbe per gestire i dati un database che ancora non vi abbiamo spiegato. Createvi quindi una classe "Database" con all'interno liste degli oggetti che utilizzerete per questo sistema (lista utenti, lista automobili etc...).
+Ovviamente un reale sistema del genere richiederebbe per gestire i dati un entita che ancora non vi abbiamo spiegato. Createvi quindi una classe "gestione.Database" con all'interno liste degli oggetti che utilizzerete per questo sistema (lista utenti, lista automobili etc...).
 
 La traccia poi non è molto precisa su alcuni punti, questo perché vogliamo sia darvi la massima libertà per affrontare il problema e soprattutto darvi una situazione abbastanza realistica del mondo del lavoro reale, capita spesso che non soltanto vi possiate interfacciare con una persona non tecnica ma spesso il cliente non sa nemmeno di preciso cosa vuole veramente, sta a voi fare le domande giuste per arrivare ad un ottimo prodotto. 
 
@@ -43,4 +43,4 @@ HINT 1: Non esiste "la soluzione" di questo esercizio, è possibile tirare fuori
 
 HINT 2: Se avete una domanda da fare sul sistema, fatela sul canale discord, è più veloce e potrebbe essere d'aiuto per altri gruppi.
 
-HINT 3: Se pensate che una certa libreria esterna può esservi utile per risolvere un determinato problema...Usatela!
+HINT 3: Se pensate che una certa libreria esterna può esservi utile per risolvere un determinato problema...Usatela!!
