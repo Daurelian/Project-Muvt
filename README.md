@@ -29,7 +29,7 @@ Realizzate le classi e le funzionalità di questo sistema e fatevi un main dove 
 
 # DISCLAIMER
 
-Ovviamente un reale sistema del genere richiederebbe per gestire i dati un database che ancora non vi abbiamo spiegato. Createvi quindi una classe "Database" con all'interno liste degli oggetti che utilizzerete per questo sistema (lista utenti, lista automobili etc...).
+Ovviamente un reale sistema del genere richiederebbe per gestire i dati un entita che ancora non vi abbiamo spiegato. Createvi quindi una classe "gestione.Database" con all'interno liste degli oggetti che utilizzerete per questo sistema (lista utenti, lista automobili etc...).
 
 La traccia poi non è molto precisa su alcuni punti, questo perché vogliamo sia darvi la massima libertà per affrontare il problema e soprattutto darvi una situazione abbastanza realistica del mondo del lavoro reale, capita spesso che non soltanto vi possiate interfacciare con una persona non tecnica ma spesso il cliente non sa nemmeno di preciso cosa vuole veramente, sta a voi fare le domande giuste per arrivare ad un ottimo prodotto. 
 
