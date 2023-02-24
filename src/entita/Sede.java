@@ -1,5 +1,7 @@
 package entita;
 
+import java.util.Arrays;
+
 public class Sede {
     private String nome;
     private int[] posizione_sede;
@@ -13,7 +15,13 @@ public class Sede {
         return nome;
     }
 
-    public int[] getPosizione_sede() {
+    public int[] getPosizioneSede() {
         return posizione_sede;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Luogo: " +nome+ "\nPosizione: " +Arrays.toString(posizione_sede);
     }
 }

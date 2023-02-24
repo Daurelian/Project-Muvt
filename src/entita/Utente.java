@@ -1,5 +1,7 @@
 package entita;
 
+import java.util.Arrays;
+
 public class Utente {
     private int ID;
     private String nome;
@@ -28,11 +30,11 @@ public class Utente {
         return saldo;
     }
 
-    public Patente getPatenti(int i) {
+    public Patente getPatente(int i) {
         return patenti[i]; //TODO da rivedere
     }
 
-    public int[] getPosizione_utente() {
+    public int[] getPosizioneUtente() {
         return posizione_utente;
     }
 
@@ -40,7 +42,24 @@ public class Utente {
         this.saldo = saldo;
     }
 
-    public void setPosizione_utente(int[] posizione_utente) {
+    public void setPosizioneUtente(int[] posizione_utente) {
         this.posizione_utente = posizione_utente;
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder driving_licenses = new StringBuilder();
+
+        driving_licenses.append("[ ");
+
+        for (Patente patente : patenti)
+            if (patente != null)
+                driving_licenses.append(patente+ " ");
+
+        driving_licenses.append("]");
+
+        return "ID: " +ID+ "\nNome: " +nome+ "\nCognome: " +cognome+ "\nCodice fiscale: " +codice_fiscale+ "\nData di nascita: "
+                +data_di_nascita+ "\nSaldo: " +saldo+ "€\nPatenti: " +driving_licenses+ "\nPosizione: " +Arrays.toString(posizione_utente);
     }
 }
