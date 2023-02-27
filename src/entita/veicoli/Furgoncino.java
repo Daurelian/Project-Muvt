@@ -8,8 +8,8 @@ public class Furgoncino extends Veicolo implements Alimentazione {
     private float serbatoio = 100f;
     TipoAlimentazione tipo_alimentazione;
 
-    public Furgoncino(String targa, Sede sede, TipoAlimentazione tipo_alimentazione) {
-        super(sede);
+    public Furgoncino(String targa, Sede sede, TipoAlimentazione tipo_alimentazione,double prezzo) {
+        super(sede,prezzo);
         this.targa = targa;
         this.tipo_alimentazione = tipo_alimentazione;
     }

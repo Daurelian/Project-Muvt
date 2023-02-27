@@ -5,6 +5,6 @@ import entita.Veicolo;
 
 public class Bicicletta extends Veicolo {
     public Bicicletta(Sede sede) {
-        super(sede);
+        super(sede,15.0);
     }
 }
