@@ -54,5 +54,6 @@ public class Main {
        // muvt.stampaVeicoli();
        // muvt.stampaSedi();
        // muvt.stampaUtenti();
+        muvt.affittaVeicolo(michele, auto1);
     }
 }

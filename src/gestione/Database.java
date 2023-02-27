@@ -10,6 +10,7 @@ public class Database {
     private static HashMap<Integer, Veicolo> veicoli = new HashMap<>(0);
     private static HashMap<Integer, Utente> utenti = new HashMap<>(0);
     private static HashSet<Sede> sedi = new HashSet<>(0);
+    //hashmap key<id veicolo>, Affito (date e utenti)
 
     protected static void addUtente(Utente utente){
         utenti.put(utente.getID(), utente);
