@@ -12,11 +12,11 @@ public abstract class Veicolo implements Observer {
     private int[] posizione_veicolo;        //Coordinate (x, y, z)
     LocalDateTime endtime;
     private int occupanteID;
-    private double prezzoOrario;
+    private float prezzoMinuto;
 
-    protected Veicolo(Sede sede, double prezzo) {
+    protected Veicolo(Sede sede, float prezzo) {
         this.posizione_veicolo = sede.getPosizioneSede();
-        this.prezzoOrario=prezzo;
+        this.prezzoMinuto=prezzo;
         ID = contatore++;
     }
 
@@ -30,6 +30,10 @@ public abstract class Veicolo implements Observer {
 
     public int getOccupanteID() {
         return occupanteID;
+    }
+
+    public float getPrezzoMinuto() {
+        return prezzoMinuto;
     }
 
     public void setDisponibile(boolean disponibile) {

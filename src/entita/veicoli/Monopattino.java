@@ -8,7 +8,7 @@ public class Monopattino extends Veicolo implements Alimentazione {
     TipoAlimentazione tipo_alimentazione = TipoAlimentazione.ELETTRICO;
 
     public Monopattino(Sede sede) {
-        super(sede,5.0);
+        super(sede,0.15f);
     }
 
     @Override

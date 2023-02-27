@@ -2,12 +2,14 @@ import entita.Patente;
 import entita.Sede;
 import entita.Utente;
 import entita.veicoli.*;
+import gestione.Database;
 import gestione.Muvt;
 
 import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
+        Muvt muvt=Muvt.getInstance();
 
         //Creazione delle sedi
         Sede bari = new Sede("Bari", new int[]{1,1,1});
@@ -16,27 +18,28 @@ public class Main {
         Sede militello = new Sede("Militello in Val di Catania", new int[]{4,4,4});
 
         //Creazione dei veicoli
-        Automobile auto1 = new Automobile("ab123cd", bari, TipoAlimentazione.ELETTRICO,20);
-        Automobile auto2 = new Automobile("ef456gh", militello, TipoAlimentazione.CARBURANTE,16);
-        Furgoncino furgoncino1 = new Furgoncino("il789iu", militello, TipoAlimentazione.CARBURANTE,23);
-        Furgoncino furgoncino2 = new Furgoncino("kj896oi", taranto, TipoAlimentazione.CARBURANTE,22);
+        Automobile auto1 = new Automobile("ab123cd", bari, TipoAlimentazione.ELETTRICO,0.35f);
+        Automobile auto2 = new Automobile("ef456gh", militello, TipoAlimentazione.CARBURANTE,0.25f);
+        Furgoncino furgoncino1 = new Furgoncino("il789iu", militello, TipoAlimentazione.CARBURANTE,0.40f);
+        Furgoncino furgoncino2 = new Furgoncino("kj896oi", taranto, TipoAlimentazione.CARBURANTE,0.30f);
         Monopattino monopattino1 = new Monopattino(taranto);
         Monopattino monopattino2 = new Monopattino(vittoria);
-        Moto moto1 = new Moto("xv895wj", bari, TipoAlimentazione.CARBURANTE,18);
-        Moto moto2 = new Moto("ca220ne", taranto, TipoAlimentazione.ELETTRICO,18);
+        Moto moto1 = new Moto("xv895wj", bari, TipoAlimentazione.CARBURANTE,0.20f);
+        Moto moto2 = new Moto("ca220ne", taranto, TipoAlimentazione.ELETTRICO,0.32f);
         Bicicletta bici = new Bicicletta(taranto);
 
+        /*
         //Creazione degli utenti
         Utente michele = new Utente("Michele", "Damone", "mcldmn", "06/06/94", 13, new Patente[]{Patente.A, Patente.B, null});
         Utente davide = new Utente("Davide", "Campagna", "dvdcmp", "18/01/98", 1300, new Patente[]{null, Patente.B, null});
         Utente pippo = new Utente("Giuseppe", "Dambone", "gspdmb", "30/08/93", 500, new Patente[]{Patente.A, Patente.B, Patente.B1});
         Utente lucri = new Utente("Lucrezia", "Arestia", "lrzrst", "10/07/97", 20, new Patente[]{Patente.A, Patente.B, null});
 
-        Muvt muvt=Muvt.getInstance();
         muvt.aggiungiUtente(michele);
         muvt.aggiungiUtente(davide);
         muvt.aggiungiUtente(pippo);
         muvt.aggiungiUtente(lucri);
+*/
 
         muvt.aggiungiSede(bari);
         muvt.aggiungiSede(vittoria);
@@ -53,12 +56,21 @@ public class Main {
         muvt.aggiungiVeicolo(moto2);
         muvt.aggiungiVeicolo(bici);
 
+
+        //Database.updateUsersCsv();
+        Database.leggiUtenti();
+        muvt.stampaUtenti();
+        muvt.affittaVeicolo(1079644241, auto1,1);
+        muvt.notifyEndtime(LocalDateTime.now().plusMinutes(1));
+        muvt.stampaUtenti();
+        /*
+
        // muvt.stampaVeicoli();
        // muvt.stampaSedi();
-       // muvt.stampaUtenti();
+       //
         System.out.println(LocalDateTime.now());
-        muvt.affittaVeicolo(michele, auto1,1);
+
         System.out.println(LocalDateTime.now().plusMinutes(1));
-        muvt.notifyEndtime(LocalDateTime.now().plusMinutes(1));
+        */
     }
 }

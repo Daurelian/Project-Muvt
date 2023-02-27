@@ -20,6 +20,8 @@ public class Utente {
         this.saldo = saldo;
         this.patenti = patenti;
         ID = codice_fiscale.hashCode();
+        if(ID<0)
+            ID*=-1;
     }
 
     public int getID() {
@@ -41,10 +43,20 @@ public class Utente {
     public void setSaldo(float saldo) {
         this.saldo = saldo;
     }
+    public void updateSaldo(float money,boolean addCredito){
+        if(addCredito)
+            this.saldo+=money;
+        else
+            this.saldo-=money;
+    }
 
     public void setPosizioneUtente(int[] posizione_utente) {
         this.posizione_utente = posizione_utente;
     }
+    public String writeAsCsv() {
+        return String.join(",", Arrays.asList(Integer.toString(ID), nome, cognome,codice_fiscale, data_di_nascita,Float.toString(saldo),Arrays.toString(patenti)));
+    }
+
 
 
     @Override

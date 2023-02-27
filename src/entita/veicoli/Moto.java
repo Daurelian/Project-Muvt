@@ -8,7 +8,7 @@ public class Moto extends Veicolo implements Alimentazione {
     private float serbatoio = 100f;
     TipoAlimentazione tipo_alimentazione;
 
-    public Moto(String targa, Sede sede, TipoAlimentazione tipo_alimentazione,double prezzo) {
+    public Moto(String targa, Sede sede, TipoAlimentazione tipo_alimentazione,float prezzo) {
         super(sede,prezzo);
         this.targa = targa;
         this.tipo_alimentazione = tipo_alimentazione;

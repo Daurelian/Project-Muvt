@@ -42,24 +42,31 @@ public class Muvt implements Observable {
     public void stampaSedi(){
     System.out.println(Database.getSedi());
     }
-    public void affittaVeicolo(Utente utente, Veicolo veicolo, long minutes /*Duration*/ ){
+    public void affittaVeicolo(int ID, Veicolo veicolo, long minutes){
+        if(cercaUtente(ID).getSaldo() < (float) minutes* veicolo.getPrezzoMinuto()){
+            System.out.println("Credito insufficiente");
+            return;
+        }
         if(!veicolo.isDisponibile()){
             System.out.println("Veicolo selezionato non dsponibile");
             return;
         }
         veicolo.setDisponibile(false);
-        veicolo.setOccupanteID(utente.getID());
+        veicolo.setOccupanteID(ID);
         veicolo.setEndtime(LocalDateTime.now().plusMinutes(minutes));
         addObserver(veicolo);
-        //// TODO calcolaprezzo
+        cercaUtente(ID).updateSaldo((float)minutes* veicolo.getPrezzoMinuto(),false);
     }
-    public void rinnovaVeicolo(Utente utente,Veicolo veicolo,long minutes){
+    public void rinnovaVeicolo(int ID,Veicolo veicolo, long minutes){
         veicolo.setEndtime(LocalDateTime.now().plusMinutes(minutes));
         System.out.println("La preontazione del veicolo " + veicolo.getID()+ " è stata prolungata di "+minutes+" minuti");
-        //calcolaprezzo
+        cercaUtente(ID).updateSaldo((float)minutes* veicolo.getPrezzoMinuto(),false);
         System.out.println("Scalati (totsoldi) dal saldo dell'utente: " + veicolo.getOccupanteID());
     }
 
+    public Utente cercaUtente(int ID){
+        return Database.getUtenti().get(ID);
+    }
 
     //TODO checkcarburante(),lasciaveicolo(),checkpatente(),checkcasco(),checktempoprenotazione(minimo5minuti),aggiungiCredito()
     // modificareFLOWCHART(observer,singleton,attributivari),*opzionale fare i BUILDER
@@ -76,6 +83,6 @@ public class Muvt implements Observable {
     public void notifyEndtime(LocalDateTime blabla){ //Questa funzione manda una notifica a tutti gli osservatori passando come messaggio LocalDateTime riferito all'istante attuale
         for(Veicolo ob :obs)
             if(ob.notifyMe(blabla))   //condizione di verità di avvenuto messaggio
-                rinnovaVeicolo(Database.getUtenti().get(ob.getOccupanteID()),ob,1); //Il sistema rinnova automaticamente la prenotazione di un tempo prestabilito.
+                rinnovaVeicolo(ob.getOccupanteID(),ob,1); //Il sistema rinnova automaticamente la prenotazione di un tempo prestabilito.
     }
 }
