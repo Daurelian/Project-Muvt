@@ -55,7 +55,7 @@ public class Muvt implements Observable {
     }
     public void rinnovaVeicolo(Utente utente,Veicolo veicolo,long minutes){
         veicolo.setEndtime(LocalDateTime.now().plusMinutes(minutes));
-        System.out.println("La preontazione del veicolo" + veicolo.getID()+ "è stata prolungata di "+minutes+" minuti");
+        System.out.println("La preontazione del veicolo " + veicolo.getID()+ " è stata prolungata di "+minutes+" minuti");
         //calcolaprezzo
         System.out.println("Scalati (totsoldi) dal saldo dell'utente: " + veicolo.getOccupanteID());
     }
