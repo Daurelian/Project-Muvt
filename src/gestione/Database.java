@@ -3,7 +3,6 @@ package gestione;
 import entita.Sede;
 import entita.Utente;
 import entita.Veicolo;
-
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -15,6 +14,4 @@ public class Database {
     public void addUtente(Utente utente){
         utenti.put(utente.getID(), utente);
     }
-
-
 }
