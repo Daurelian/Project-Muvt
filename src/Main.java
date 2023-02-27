@@ -4,6 +4,8 @@ import entita.Utente;
 import entita.veicoli.*;
 import gestione.Muvt;
 
+import java.time.LocalDateTime;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -14,14 +16,14 @@ public class Main {
         Sede militello = new Sede("Militello in Val di Catania", new int[]{4,4,4});
 
         //Creazione dei veicoli
-        Automobile auto1 = new Automobile("ab123cd", bari, TipoAlimentazione.ELETTRICO);
-        Automobile auto2 = new Automobile("ef456gh", militello, TipoAlimentazione.CARBURANTE);
-        Furgoncino furgoncino1 = new Furgoncino("il789iu", militello, TipoAlimentazione.CARBURANTE);
-        Furgoncino furgoncino2 = new Furgoncino("kj896oi", taranto, TipoAlimentazione.CARBURANTE);
+        Automobile auto1 = new Automobile("ab123cd", bari, TipoAlimentazione.ELETTRICO,20);
+        Automobile auto2 = new Automobile("ef456gh", militello, TipoAlimentazione.CARBURANTE,16);
+        Furgoncino furgoncino1 = new Furgoncino("il789iu", militello, TipoAlimentazione.CARBURANTE,23);
+        Furgoncino furgoncino2 = new Furgoncino("kj896oi", taranto, TipoAlimentazione.CARBURANTE,22);
         Monopattino monopattino1 = new Monopattino(taranto);
         Monopattino monopattino2 = new Monopattino(vittoria);
-        Moto moto1 = new Moto("xv895wj", bari, TipoAlimentazione.CARBURANTE);
-        Moto moto2 = new Moto("ca220ne", taranto, TipoAlimentazione.ELETTRICO);
+        Moto moto1 = new Moto("xv895wj", bari, TipoAlimentazione.CARBURANTE,18);
+        Moto moto2 = new Moto("ca220ne", taranto, TipoAlimentazione.ELETTRICO,18);
         Bicicletta bici = new Bicicletta(taranto);
 
         //Creazione degli utenti
@@ -54,6 +56,9 @@ public class Main {
        // muvt.stampaVeicoli();
        // muvt.stampaSedi();
        // muvt.stampaUtenti();
-        muvt.affittaVeicolo(michele, auto1);
+        System.out.println(LocalDateTime.now());
+        muvt.affittaVeicolo(michele, auto1,1);
+        System.out.println(LocalDateTime.now().plusMinutes(1));
+        muvt.notifyEndtime(LocalDateTime.now().plusMinutes(1));
     }
 }
