@@ -60,6 +60,6 @@ public class Utente {
         driving_licenses.append("]");
 
         return "ID: " +ID+ "\nNome: " +nome+ "\nCognome: " +cognome+ "\nCodice fiscale: " +codice_fiscale+ "\nData di nascita: "
-                +data_di_nascita+ "\nSaldo: " +saldo+ "€\nPatenti: " +driving_licenses+ "\nPosizione: " +Arrays.toString(posizione_utente);
+                +data_di_nascita+ "\nSaldo: " +saldo+ "€\nPatenti: " +driving_licenses+ "\nPosizione: " +Arrays.toString(posizione_utente)+"\n\n";
     }
 }

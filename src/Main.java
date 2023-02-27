@@ -2,6 +2,7 @@ import entita.Patente;
 import entita.Sede;
 import entita.Utente;
 import entita.veicoli.*;
+import gestione.Muvt;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,5 +29,30 @@ public class Main {
         Utente davide = new Utente("Davide", "Campagna", "dvdcmp", "18/01/98", 1300, new Patente[]{null, Patente.B, null});
         Utente pippo = new Utente("Giuseppe", "Dambone", "gspdmb", "30/08/93", 500, new Patente[]{Patente.A, Patente.B, Patente.B1});
         Utente lucri = new Utente("Lucrezia", "Arestia", "lrzrst", "10/07/97", 20, new Patente[]{Patente.A, Patente.B, null});
+
+        Muvt muvt=Muvt.getInstance();
+        muvt.aggiungiUtente(michele);
+        muvt.aggiungiUtente(davide);
+        muvt.aggiungiUtente(pippo);
+        muvt.aggiungiUtente(lucri);
+
+        muvt.aggiungiSede(bari);
+        muvt.aggiungiSede(vittoria);
+        muvt.aggiungiSede(militello);
+        muvt.aggiungiSede(taranto);
+
+        muvt.aggiungiVeicolo(auto1);
+        muvt.aggiungiVeicolo(auto2);
+        muvt.aggiungiVeicolo(furgoncino1);
+        muvt.aggiungiVeicolo(furgoncino2);
+        muvt.aggiungiVeicolo(monopattino1);
+        muvt.aggiungiVeicolo(monopattino2);
+        muvt.aggiungiVeicolo(moto1);
+        muvt.aggiungiVeicolo(moto2);
+        muvt.aggiungiVeicolo(bici);
+
+       // muvt.stampaVeicoli();
+       // muvt.stampaSedi();
+       // muvt.stampaUtenti();
     }
 }

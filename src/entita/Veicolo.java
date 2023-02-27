@@ -2,7 +2,7 @@ package entita;
 
 import java.util.Arrays;
 
-public class Veicolo {
+public abstract class Veicolo {
     private static int contatore = 1;       //Serve per incrementare l'ID ad ogni creazione di un veicolo
     private int ID;
     private boolean disponibile = true;     //Al momento della creazione il veicolo è sempre disponibile

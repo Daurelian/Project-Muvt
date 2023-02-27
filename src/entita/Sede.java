@@ -22,6 +22,6 @@ public class Sede {
 
     @Override
     public String toString() {
-        return "Luogo: " +nome+ "\nPosizione: " +Arrays.toString(posizione_sede);
+        return "Luogo: " +nome+ "\nPosizione: " +Arrays.toString(posizione_sede)+"\n\n";
     }
 }
