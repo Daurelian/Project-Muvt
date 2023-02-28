@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,52 +18,85 @@ public class Database {
     private static HashMap<Integer, Veicolo> veicoli = new HashMap<>(0);
     private static HashMap<Integer, Utente> utenti = new HashMap<>(0);
     private static HashSet<Sede> sedi = new HashSet<>(0);
-    //hashmap key<id veicolo>, Affito (date e utenti)
 
 
-    protected void inizializzaDatabase(){
+    /**
+     * Questo metodo legge da database (file.csv) gli utenti e ne fa una copia cache nell'HashMap attributo della classe
+     */
+    protected void inizializzaDatabase() {
         leggiUtenti();
         //leggiVeicoli();
         //leggiSedi();
     }
-    public static void leggiUtenti(){
-        try {
-            if (!Files.exists(Paths.get("files","CSV","users.csv")))
-                Files.createFile(Paths.get("files","CSV","users.csv"));
-        } catch (IOException e) { e.printStackTrace(); }
 
-        try (BufferedReader br = Files.newBufferedReader(Paths.get("files","CSV","users.csv"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] info=line.split(",");
-                //Utente("Michele", "Damone", "mcldmn", "06/06/94", 13, new Patente[]{Patente.A, Patente.B, null});
-                Patente[] patente = new Patente[3];
-                int i=0;
-                for (i=0;i<patente.length;i++){
-                    String trad=info[7+i].replace("[","").replace("]","").replace(" ","");
-                    if(!trad.equals("null")){
-                        Patente valore=Patente.valueOf(trad);
-                        patente[i]=valore;
+    /**
+     * Questo metodo si occupa di leggere gli utente dal file csv
+     */
+    public static void leggiUtenti() {
+        //Percorso relativo del file csv
+        Path path = Paths.get("files", "CSV", "users.csv");
+
+        //Se il file non esiste viene creato
+        try {
+            if (!Files.exists(path))
+                Files.createFile(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //try-with-resources per leggere da file
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+            String line;        //Variabile per memorizzare il contenuto di una riga del csv
+            String temp;        //Variabile temporanea per memorizzare una singola patente senza i caratteri ("[", "]", " ")
+            String[] info;      //In ogni cella contiene l'ID, nome, cognome, .... tutti i vari campi dell'utente
+            Patente[] patenti;  //Contiene le patenti dell'utente
+
+            while ((line = reader.readLine()) != null) {
+                info = line.split(",");     //Memorizzo tutti i campi dell'utente in ogni cella dell'array "info"
+                patenti = new Patente[3];         //Inizializzo questa variabile che memorizzerà le patenti (le quali si trovano da info[7] a info[9])
+
+                //Ogni patente (A, B, B1 o eventualmente "null") la memorizzo in "temp" e, se non è null, la aggiungo al vettore "patenti"
+                for (int i=0; i<patenti.length; i++) {
+                    temp = info[7+i].replace("[","").replace("]","").replace(" ","");
+
+                    if (!temp.equals("null")) {
+                        Patente valore = Patente.valueOf(temp);
+                        patenti[i] = valore;
                     }
                 }
-                utenti.put(Integer.valueOf(info[0]),new Utente(info[1],info[2],info[3],info[4],Float.valueOf(info[5]),Boolean.parseBoolean(info[6]),patente));
+                //Campi dell'utente = (nome, cognome, cod_fisc, data_nascita, saldo, casco, new Patente[]{Patente.A, Patente.B, null});
+                utenti.put(Integer.valueOf(info[0]), new Utente(info[1], info[2], info[3], info[4], Float.parseFloat(info[5]), Boolean.parseBoolean(info[6]), patenti));
             }
         }
-        catch (IOException e) { e.printStackTrace(); }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    protected static void addUtente(Utente utente){
+
+    /**
+     * Questo metodo permette di aggiungere l'utente al database (file csv) e al database interno usato come cache (classe Database)
+     * @param utente utente da aggiungere al database
+     */
+    protected static void addUtente(Utente utente) {
         utenti.put(utente.getID(), utente);
         updateUsersCsv();
     }
+
     protected static void addSede(Sede sede){
         sedi.add(sede);
     }
     protected static void addVeicolo(Veicolo veicolo){
         veicoli.put(veicolo.getID(), veicolo);
     }
-    protected static void removeUtente(Utente utente) { utenti.remove(utente.getID());}
-    protected static void removeVeicolo(Veicolo veicolo) {veicoli.remove(veicolo.getID());}
-    protected static void removeSede(Sede sede) {sedi.remove(sede);}
+    protected static void removeUtente(Utente utente) {
+        utenti.remove(utente.getID());
+    }
+    protected static void removeVeicolo(Veicolo veicolo) {
+        veicoli.remove(veicolo.getID());
+    }
+    protected static void removeSede(Sede sede) {
+        sedi.remove(sede);
+    }
     public static HashMap<Integer, Veicolo> getVeicoli() {
         return veicoli;
     }
@@ -72,11 +106,18 @@ public class Database {
     public static HashSet<Sede> getSedi() {
         return sedi;
     }
+
+    /**
+     * Aggiorna il file csv con le informazioni memorizzate nella classe Database (quindi le info presenti nella copia "cache" del database)
+     * @return vero o falso a seconda se l'operazione è andata o meno a buon fine
+     */
     public static boolean updateUsersCsv() {
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get("files","CSV","users.csv"))) {
+        Path path = Paths.get("files", "CSV", "users.csv");
+
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             for (Utente user : utenti.values()) {
-                bw.write(user.writeAsCsv());
-                bw.newLine();
+                writer.write(user.writeAsCsv());
+                writer.newLine();
             }
         }
         catch (IOException e) {
