@@ -6,6 +6,11 @@ import entita.Veicolo;
 public class Automobile extends Veicolo implements Alimentazione {
     private String targa;
     private float serbatoio = 100f;
+
+    public float getSerbatoio() {
+        return serbatoio;
+    }
+
     TipoAlimentazione tipo_alimentazione;
 
     public Automobile(String targa, Sede sede, TipoAlimentazione tipo_alimentazione,float prezzo) {
@@ -14,6 +19,9 @@ public class Automobile extends Veicolo implements Alimentazione {
         this.tipo_alimentazione = tipo_alimentazione;
     }
 
+    public void brumBrum(){
+        this.serbatoio*=0.80;
+    }
     @Override
     public String controlloAlimentazione() {
         return null;

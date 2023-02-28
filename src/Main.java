@@ -60,11 +60,14 @@ public class Main {
         //Database.updateUsersCsv();
         Database.leggiUtenti();
         muvt.stampaUtenti();
-        muvt.affittaVeicolo(1079644241, auto1,1);
-        muvt.notifyEndtime(LocalDateTime.now().plusMinutes(1));
+        muvt.affittaVeicolo(1079644241, auto1,10);
+        muvt.notifyEndtime(LocalDateTime.now().plusMinutes(10));
         muvt.stampaUtenti();
-        /*
+        auto1.brumBrum();
+        muvt.checkCarburante(auto1);
+        muvt.lasciaVeicolo(bari,auto1);
 
+        /*
        // muvt.stampaVeicoli();
        // muvt.stampaSedi();
        //

@@ -56,6 +56,7 @@ public abstract class Veicolo implements Observer {
         this.occupanteID = occupanteID;
     }
 
+
     @Override
     public String toString() {
         return "ID: " +ID+ "\nDisponibile: " +disponibile+ "\nCoordinate: " +Arrays.toString(posizione_veicolo);

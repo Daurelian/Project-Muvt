@@ -1,4 +1,4 @@
-1236523659,Giuseppe,Dambone,gspdmb,30/08/93,500.0,[A, B, B1]
-1079644241,Michele,Damone,mcldmn,06/06/94,13.0,[A, B, null]
-1093989857,Lucrezia,Arestia,lrzrst,10/07/97,20.0,[A, B, null]
-1319998988,Davide,Campagna,dvdcmp,18/01/98,1300.0,[null, B, null]
+1236523659,Giuseppe,Dambone,gspdmb,30/08/93,500.0,false,[A, B, B1]
+1079644241,Michele,Damone,mcldmn,06/06/94,13.0,true,[A, B, null]
+1093989857,Lucrezia,Arestia,lrzrst,10/07/97,20.0,false,[A, B, null]
+1319998988,Davide,Campagna,dvdcmp,18/01/98,1300.0,true,[null, B, null]

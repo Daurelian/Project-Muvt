@@ -12,7 +12,13 @@ public class Utente {
     private Patente[] patenti;
     private int[] posizione_utente = new int[3];
 
-    public Utente(String nome, String cognome, String codice_fiscale, String data_di_nascita, float saldo, Patente[] patenti) {
+    private boolean casco;
+
+    public boolean isCasco() {
+        return casco;
+    }
+
+    public Utente(String nome, String cognome, String codice_fiscale, String data_di_nascita, float saldo, boolean casco, Patente[] patenti) {
         this.nome = nome;
         this.cognome = cognome;
         this.codice_fiscale = codice_fiscale;
@@ -22,6 +28,7 @@ public class Utente {
         ID = codice_fiscale.hashCode();
         if(ID<0)
             ID*=-1;
+        this.casco=casco;
     }
 
     public int getID() {
@@ -54,7 +61,7 @@ public class Utente {
         this.posizione_utente = posizione_utente;
     }
     public String writeAsCsv() {
-        return String.join(",", Arrays.asList(Integer.toString(ID), nome, cognome,codice_fiscale, data_di_nascita,Float.toString(saldo),Arrays.toString(patenti)));
+        return String.join(",", Arrays.asList(Integer.toString(ID), nome, cognome,codice_fiscale, data_di_nascita,Float.toString(saldo),Boolean.toString(casco),Arrays.toString(patenti)));
     }
 
 
@@ -72,6 +79,6 @@ public class Utente {
         driving_licenses.append("]");
 
         return "ID: " +ID+ "\nNome: " +nome+ "\nCognome: " +cognome+ "\nCodice fiscale: " +codice_fiscale+ "\nData di nascita: "
-                +data_di_nascita+ "\nSaldo: " +saldo+ "€\nPatenti: " +driving_licenses+ "\nPosizione: " +Arrays.toString(posizione_utente)+"\n\n";
+                +data_di_nascita+ "\nSaldo: " +saldo+ "€\nPatenti: " +driving_licenses+ "\nCasco: "+casco+"\nPosizione: " +Arrays.toString(posizione_utente)+"\n\n";
     }
 }

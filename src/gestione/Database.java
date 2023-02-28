@@ -39,13 +39,13 @@ public class Database {
                 Patente[] patente = new Patente[3];
                 int i=0;
                 for (i=0;i<patente.length;i++){
-                    String trad=info[6+i].replace("[","").replace("]","").replace(" ","");
+                    String trad=info[7+i].replace("[","").replace("]","").replace(" ","");
                     if(!trad.equals("null")){
                         Patente valore=Patente.valueOf(trad);
                         patente[i]=valore;
                     }
                 }
-                utenti.put(Integer.valueOf(info[0]),new Utente(info[1],info[2],info[3],info[4],Float.valueOf(info[5]),patente));
+                utenti.put(Integer.valueOf(info[0]),new Utente(info[1],info[2],info[3],info[4],Float.valueOf(info[5]),Boolean.parseBoolean(info[6]),patente));
             }
         }
         catch (IOException e) { e.printStackTrace(); }

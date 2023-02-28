@@ -6,4 +6,5 @@ public interface Alimentazione {
       * @return percentuale di carburante/batteria rimanente sottoforma di una stringa (es. "47%")
       */
      String controlloAlimentazione();
+     void brumBrum();
 }
