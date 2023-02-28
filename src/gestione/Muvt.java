@@ -56,12 +56,15 @@ public class Muvt implements Observable {
         veicolo.setEndtime(LocalDateTime.now().plusMinutes(minutes));
         addObserver(veicolo);
         cercaUtente(ID).updateSaldo((float)minutes* veicolo.getPrezzoMinuto(),false);
+        // updateUtentiCsv(); //aggiornare il csv con il nuovo credito
     }
+
     public void rinnovaVeicolo(int ID,Veicolo veicolo, long minutes){
         veicolo.setEndtime(LocalDateTime.now().plusMinutes(minutes));
         System.out.println("La preontazione del veicolo " + veicolo.getID()+ " è stata prolungata di "+minutes+" minuti");
         cercaUtente(ID).updateSaldo((float)minutes* veicolo.getPrezzoMinuto(),false);
         System.out.println("Scalati (totsoldi) dal saldo dell'utente: " + veicolo.getOccupanteID());
+        // updateUtentiCsv(); //aggiornare il csv con il nuovo credito
     }
 
     public Utente cercaUtente(int ID){
