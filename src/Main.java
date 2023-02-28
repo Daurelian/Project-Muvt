@@ -1,7 +1,5 @@
-import entita.Patente;
 import entita.Sede;
 import entita.SedeCSV;
-import entita.Utente;
 import entita.veicoli.*;
 import gestione.Database;
 import gestione.Muvt;
@@ -40,13 +38,15 @@ public class Main {
         muvt.aggiungiUtente(davide);
         muvt.aggiungiUtente(pippo);
         muvt.aggiungiUtente(lucri);
-*/
+        */
 
+        //Aggiunta delle sedi
         muvt.aggiungiSede(bari);
         muvt.aggiungiSede(vittoria);
         muvt.aggiungiSede(militello);
         muvt.aggiungiSede(taranto);
 
+        //Aggiunta dei veicoli
         muvt.aggiungiVeicolo(auto1);
         muvt.aggiungiVeicolo(auto2);
         muvt.aggiungiVeicolo(furgoncino1);
@@ -57,36 +57,32 @@ public class Main {
         muvt.aggiungiVeicolo(moto2);
         muvt.aggiungiVeicolo(bici);
 
-
         //Database.updateUsersCsv();
         Database.leggiUtenti();
-//        muvt.stampaUtenti();
-        muvt.affittaVeicolo(1079644241, auto1,10);
+        muvt.affittaVeicolo(1079644241, auto1, 10);
         muvt.notifyEndtime(LocalDateTime.now().plusMinutes(10));
-//        muvt.stampaUtenti();
-        auto1.brumBrum();
-        muvt.checkCarburante(auto1);
+        auto1.brumBrum();                   //Scarica del 10% il carburante per ogni "brum" (questo metodo scarica del 20%)
+        muvt.stampaLivelloCarburante(auto1);
         auto1.setPosizioneVeicolo(taranto.getPosizioneSede());
-        muvt.lasciaVeicolo(taranto,auto1);
+        muvt.lasciaVeicolo(taranto, auto1);
 
         //Zona DAO
         SedeCSV sedi= new SedeCSV();
         System.out.println("\nLista sedi");
         sedi.stampa();
         sedi.updateSedes();
-        System.out.println("\nRimuovo una sede");
+        System.out.println("\nRimuovo la sede di Bari");
         sedi.removeSede(bari);
         sedi.stampa();
-        System.out.println("\nAggiungo una sede");
+        System.out.println("\nRi-aggiungo la sede di Bari");
         sedi.addSede(bari);
         sedi.stampa();
 
         /*
-       // muvt.stampaVeicoli();
-       // muvt.stampaSedi();
-       //
-        System.out.println(LocalDateTime.now());
+        muvt.stampaVeicoli();
+        muvt.stampaSedi();
 
+        System.out.println(LocalDateTime.now());
         System.out.println(LocalDateTime.now().plusMinutes(1));
         */
     }
