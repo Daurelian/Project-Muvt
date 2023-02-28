@@ -50,7 +50,6 @@ public class Database {
         }
         catch (IOException e) { e.printStackTrace(); }
     }
-
     protected static void addUtente(Utente utente){
         utenti.put(utente.getID(), utente);
         updateUsersCsv();

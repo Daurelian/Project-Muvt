@@ -1,5 +1,6 @@
 import entita.Patente;
 import entita.Sede;
+import entita.SedeCSV;
 import entita.Utente;
 import entita.veicoli.*;
 import gestione.Database;
@@ -59,13 +60,26 @@ public class Main {
 
         //Database.updateUsersCsv();
         Database.leggiUtenti();
-        muvt.stampaUtenti();
+//        muvt.stampaUtenti();
         muvt.affittaVeicolo(1079644241, auto1,10);
         muvt.notifyEndtime(LocalDateTime.now().plusMinutes(10));
-        muvt.stampaUtenti();
+//        muvt.stampaUtenti();
         auto1.brumBrum();
         muvt.checkCarburante(auto1);
-        muvt.lasciaVeicolo(bari,auto1);
+        auto1.setPosizioneVeicolo(taranto.getPosizioneSede());
+        muvt.lasciaVeicolo(taranto,auto1);
+
+        //Zona DAO
+        SedeCSV sedi= new SedeCSV();
+        System.out.println("\nLista sedi");
+        sedi.stampa();
+        sedi.updateSedes();
+        System.out.println("\nRimuovo una sede");
+        sedi.removeSede(bari);
+        sedi.stampa();
+        System.out.println("\nAggiungo una sede");
+        sedi.addSede(bari);
+        sedi.stampa();
 
         /*
        // muvt.stampaVeicoli();

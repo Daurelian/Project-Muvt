@@ -108,7 +108,7 @@ public class Muvt implements Observable {
                 removeObserver(veicolo);
                 veicolo.setEndtime(null);
                 System.out.println("Veicolo consegnato correttamente");
-            }
+            }else System.out.println("Il veicolo non è nella sede selezionata per poterlo lasciare");
         }else{
             System.out.println("Il Veicolo non è in strada");
         }
